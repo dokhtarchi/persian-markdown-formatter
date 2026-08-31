@@ -23,6 +23,7 @@
 یک فایل **Skill** ساختاریافته و مستقل از هر ابزار (agent-agnostic) که به هر دستیار هوش مصنوعی یا دستیار کدنویسی یاد می‌دهد چگونه مستندات مارک‌داون فارسی و ترکیبی RTL/LTR را به‌درستی قالب‌بندی کند — **بدون تغییر محتوا**.
 
 مناسب برای:
+
 - 📘 مستندات و راهنماها
 - 📓 یادداشت‌های فنی
 - 📄 فایل‌های README
@@ -31,34 +32,82 @@
 
 ## ⚡ شروع سریع
 
-1. **دانلود:**
-   ```bash
-   git clone https://github.com/dokhtarchi/persian-markdown-formatter.git
-   ```
-2. **افزودن به پروژه:** فایل `SKILL.md` را در ریشهٔ پروژهٔ خود کپی کنید.
-3. **از دستیار هوش مصنوعی بخواهید** (Cline، Claude Code، Cursor یا هر دستیار دیگر):
-   ```
-   این فایل را با persian-markdown-formatter بازآرایی کن.
-   ```
-   ```
-   این فایل را با persian-markdown-formatter قالب‌بندی و استانداردسازی کن.
-   ```
-   ```
-   Apply persian-markdown-formatter to this document.
-   ```
+### ۱. دانلود فایل
 
-روی **هر** فایل مارک‌داونی کار می‌کند — کافی است فایل مورد نظر را باز یا پیوست کنید و یکی از دستورات بالا را بزنید.
+[⬇️ دانلود SKILL.md (ZIP)](https://github.com/dokhtarchi/persian-markdown-formatter/releases/latest/download/persian-markdown-formatter.zip)
+
+فایل ZIP شامل `SKILL.md` را دانلود کنید.
+
+### ۲. استخراج و نصب
+
+فایل ZIP را استخراج کنید؛ یک پوشهٔ آماده به نام `persian-markdown-formatter` (شامل `SKILL.md`) به دست می‌آید. آن را در یکی از دو محل زیر قرار دهید:
+
+**گزینه الف: نصب سراسری — پیشنهادی (کار می‌کند در همهٔ پروژه‌ها)**
+
+پوشه را در دایرکتوری سراسری skillها کپی کنید تا همهٔ ایجنت‌ها و دستیارهای هوش مصنوعیِ سیستم شما به آن دسترسی داشته باشند:
+
+ویندوز:
+
+```
+C:\Users\<نام کاربری>\.agents\skills\persian-markdown-formatter
+```
+
+مک / لینوکس:
+
+```
+~/.agents/skills/persian-markdown-formatter
+```
+
+مثال واقعی: `C:\Users\ali\.agents\skills\persian-markdown-formatter\SKILL.md`
+
+با این روش، بدون کپی کردن چیزی در هر پروژه، skill در همهٔ پروژه‌های شما در دسترس است.
+
+> اگر ایجنت شما دایرکتوری اختصاصی خودش را دارد (مثلاً `~/.claude/skills`)، پوشه را در همان مسیر قرار دهید.
+
+**گزینه ب: نصب فقط برای یک پروژه**
+
+پوشه را در ریشهٔ workspace همان پروژه کپی کنید:
+
+```
+my-project\persian-markdown-formatter\SKILL.md
+```
+
+### ۳. استفاده از skill
+
+فایل مارک‌داون مورد نظر را در ویرایشگر خود باز کنید (یا به دستیار هوش مصنوعی پیوست کنید) و از دستیار بخواهید:
+
+```
+این فایل را با persian-markdown-formatter بازآرایی کن.
+```
+
+یا:
+
+```
+این فایل را با persian-markdown-formatter قالب‌بندی و استانداردسازی کن.
+```
+
+یا به انگلیسی:
+
+```
+Apply persian-markdown-formatter to this document.
+```
+
+### ۴. نتیجه
+
+دستیار هوش مصنوعی فایل را می‌خواند، طبق قوانین `SKILL.md` قالب‌بندی می‌کند و نسخهٔ تمیز، منظم و خوانا را تحویل می‌دهد — بدون تغییر محتوا.
+
+روی **هر** فایل مارک‌داونی کار می‌کند: `README.md`, `docs/tutorial.md`, `notes.md`, `CHANGELOG.md` و هر فایل `.md` دیگر.
 
 ## 🧩 سازگاری
 
 این skill **مستقل از هارنس** است: یک فایل دستورالعمل `SKILL.md` ساده است، بنابراین هر دستیار هوش مصنوعی که بتواند فایل‌های پروژه را بخواند، از آن استفاده می‌کند.
 
-| دستیار / هارنس | نحوهٔ استفاده |
-|---|---|
-| Cline (VS Code) | کپی `SKILL.md` در ریشهٔ پروژه |
-| Claude Code | ریشهٔ پروژه یا `.claude/skills/` |
-| Claude.ai (Projects) | آپلود `SKILL.md` در دانش پروژه |
-| Cursor | ارجاع به `SKILL.md` در قوانین |
+| دستیار / هارنس                        | نحوهٔ استفاده                      |
+| ------------------------------------- | ---------------------------------- |
+| Cline (VS Code)                       | کپی `SKILL.md` در ریشهٔ پروژه      |
+| Claude Code                           | ریشهٔ پروژه یا `.claude/skills/`   |
+| Claude.ai (Projects)                  | آپلود `SKILL.md` در دانش پروژه     |
+| Cursor                                | ارجاع به `SKILL.md` در قوانین      |
 | Windsurf / Copilot / Aider / OpenCode | گنجاندن `SKILL.md` در زمینهٔ ایجنت |
 
 توسعه‌یافته و تست‌شده با Cline؛ سازگار با هر ایجنتِ پشتیبانِ SKILL.md.
@@ -102,6 +151,7 @@ MIT — استفاده، تغییر و اشتراک آزاد. See [LICENSE](./LI
 A structured, harness-agnostic **Skill file** (`SKILL.md`) that teaches any AI agent or coding assistant how to properly format Persian and RTL/LTR mixed Markdown documents — **without altering the content**.
 
 Perfect for:
+
 - 📘 Documentation and guides
 - 📓 Technical notes
 - 📄 README files
@@ -127,7 +177,8 @@ Perfect for:
    ```
 
 Works on **any** Markdown file — just open or attach the file you want, then use one of the commands above.
-   ```
+
+```
 
 ## 🧩 Compatibility
 
@@ -172,3 +223,4 @@ MIT — free to use, modify, and share. See [LICENSE](./LICENSE).
 
 If this skill helps your workflow, star the repo and share it with your network.
 
+```
