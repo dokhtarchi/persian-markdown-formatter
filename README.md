@@ -2,17 +2,100 @@
 
 # 🇮🇷 Persian Markdown Formatter
 
+### یک Skill مستقل از هر ابزار، برای هر دستیار هوش مصنوعی یا هارنس کدنویسی
+
 ### An Agent-Agnostic Skill for Any AI Assistant or Coding Harness
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Format: SKILL.md](https://img.shields.io/badge/Format-SKILL.md-purple.svg)](./SKILL.md)
 [![Agent Agnostic](https://img.shields.io/badge/Agent-Agnostic-green.svg)](#-compatibility)
 
+**قالب‌بندی مستندات مارک‌داون فارسی و ترکیبی فارسی/انگلیسی برای خوانایی حداکثری — بدون تغییر محتوا.**
+
 **Format Persian and mixed Persian-English Markdown documents for maximum readability — without changing the content.**
 
-[⚡ Quick Start](#-quick-start) • [🧩 Compatibility](#-compatibility) • [🎯 Examples](#-examples) • [🇮🇷 فارسی](#-توضیحات-فارسی)
+[🇮🇷 فارسی](#-این-چیست) • [🌐 English](#-english)
 
 </div>
+
+## 🎯 این چیست؟
+
+یک فایل **Skill** ساختاریافته و مستقل از هر ابزار (agent-agnostic) که به هر دستیار هوش مصنوعی یا دستیار کدنویسی یاد می‌دهد چگونه مستندات مارک‌داون فارسی و ترکیبی RTL/LTR را به‌درستی قالب‌بندی کند — **بدون تغییر محتوا**.
+
+مناسب برای:
+- 📘 مستندات و راهنماها
+- 📓 یادداشت‌های فنی
+- 📄 فایل‌های README
+- 📚 آموزش‌های بلند
+- 📋 مشخصات پروژه
+
+## ⚡ شروع سریع
+
+1. **دانلود:**
+   ```bash
+   git clone https://github.com/dokhtarchi/persian-markdown-formatter.git
+   ```
+2. **افزودن به پروژه:** فایل `SKILL.md` را در ریشهٔ پروژهٔ خود کپی کنید.
+3. **از دستیار هوش مصنوعی بخواهید** (Cline، Claude Code، Cursor یا هر دستیار دیگر):
+   ```
+   این فایل را با persian-markdown-formatter بازآرایی کن.
+   ```
+   ```
+   این فایل را با persian-markdown-formatter قالب‌بندی و استانداردسازی کن.
+   ```
+   ```
+   Apply persian-markdown-formatter to this document.
+   ```
+
+روی **هر** فایل مارک‌داونی کار می‌کند — کافی است فایل مورد نظر را باز یا پیوست کنید و یکی از دستورات بالا را بزنید.
+
+## 🧩 سازگاری
+
+این skill **مستقل از هارنس** است: یک فایل دستورالعمل `SKILL.md` ساده است، بنابراین هر دستیار هوش مصنوعی که بتواند فایل‌های پروژه را بخواند، از آن استفاده می‌کند.
+
+| دستیار / هارنس | نحوهٔ استفاده |
+|---|---|
+| Cline (VS Code) | کپی `SKILL.md` در ریشهٔ پروژه |
+| Claude Code | ریشهٔ پروژه یا `.claude/skills/` |
+| Claude.ai (Projects) | آپلود `SKILL.md` در دانش پروژه |
+| Cursor | ارجاع به `SKILL.md` در قوانین |
+| Windsurf / Copilot / Aider / OpenCode | گنجاندن `SKILL.md` در زمینهٔ ایجنت |
+
+توسعه‌یافته و تست‌شده با Cline؛ سازگار با هر ایجنتِ پشتیبانِ SKILL.md.
+
+## ✨ ویژگی‌ها
+
+- ✅ **خروجی مارک‌داون خالص** — بدون HTML، بدون CSS، بدون wrapper
+- ✅ **آگاه به RTL/LTR** — مدیریت هوشمند متن ترکیبی فارسی/انگلیسی
+- ✅ **حفظ کامل محتوا** — قالب‌بندی بدون بازنویسی یا خلاصه‌سازی
+- ✅ **اولویت با ناوبری** — فهرست مطالب، سرتیترها و ساختار
+- ✅ **ایموجی هدفمند** — فقط برای ناوبری، نه تزئین
+- ✅ **حفظ ساختار** — بلوک‌های کد، جدول‌ها، درخت‌ها و پیوندها دست‌نخورده
+- ✅ **مستقل از فایل** — روی هر فایل مارک‌داونی، نه فقط README
+
+## 🎯 نمونه‌ها
+
+نمونهٔ کامل قبل/بعد: [`examples/before.md`](./examples/before.md) → [`examples/after.md`](./examples/after.md)
+
+## 📖 مستندات
+
+مشخصات کامل در [`SKILL.md`](./SKILL.md): هدف و اصول، مدیریت RTL/LTR، ساختار سرتیترها، فهرست مطالب، استفاده از ایموجی، فهرست‌ها/جدول‌ها/عناصر ساختاری، تأکید و نقل‌قول، فاصله‌گذاری و چک‌لیست اعتبارسنجی نهایی.
+
+## 🤝 مشارکت
+
+مشارکت خوش‌آمد است: گزارش باگ، موارد لبه، بهبودها، نمونه‌های بیشتر و ترجمه‌ها.
+
+## 📄 مجوز
+
+MIT — استفاده، تغییر و اشتراک آزاد. See [LICENSE](./LICENSE).
+
+## ⭐ حمایت
+
+اگر این skill به کارتان می‌آید، به ریپو ستاره بدهید و آن را با شبکهٔ خود به اشتراک بگذارید.
+
+---
+
+## 🌐 English
 
 ## 🎯 What is this?
 
@@ -89,22 +172,3 @@ MIT — free to use, modify, and share. See [LICENSE](./LICENSE).
 
 If this skill helps your workflow, star the repo and share it with your network.
 
----
-
-## 🇮🇷 توضیحات فارسی
-
-### این چیست؟
-
-یک فایل **Skill** ساختاریافته و مستقل از هر ابزار (agent-agnostic) که به دستیارهای هوش مصنوعی یاد می‌دهد چگونه مستندات مارک‌داون فارسی و ترکیبی را **بدون تغییر محتوا** حرفه‌ای قالب‌بندی کنند.
-
-### شروع سریع
-
-1. فایل `SKILL.md` را در ریشهٔ پروژهٔ خود کپی کنید.
-2. به دستیار هوش مصنوعی (Cline، Claude Code، Cursor و...) بگویید:
-   ```
-   این فایل را با persian-markdown-formatter بازآرایی کن.
-   ```
-
-### حمایت
-
-اگر این Skill به کارتان می‌آید، با ⭐ دادن به ریپو از آن حمایت کنید.
