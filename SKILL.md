@@ -1,0 +1,529 @@
+---
+name: persian-markdown-formatter
+description: Format Persian and mixed Persian-English Markdown documents for maximum readability, navigation, and visual consistency. Use when cleaning, restructuring, standardizing, or polishing Markdown presentation without changing the content, meaning, logical order, scope, or technical accuracy. Suitable for documentation, guides, notes, manuals, README files, project documentation, tutorials, specifications, and long-form Markdown files.
+---
+
+# Persian Markdown Formatter
+
+## User Examples
+
+Examples of how users may invoke this skill:
+
+- این فایل را با persian-markdown-formatter بازآرایی کن.
+- این فایل را با persian-markdown-formatter قالب‌بندی و استانداردسازی کن.
+- Apply persian-markdown-formatter to this document.
+
+## Purpose
+
+This skill is a Markdown formatter, not a content editor.
+
+Its responsibility is to improve:
+
+- presentation
+- readability
+- navigation
+- visual hierarchy
+- structural consistency
+
+while preserving:
+
+- content
+- meaning
+- logical order
+- scope
+- technical accuracy
+
+## Execution Rules (How to Apply This Skill)
+
+- Apply this skill by reading the Markdown source and rewriting it yourself.
+- Default delivery: write the complete formatted Markdown back to the same file, then give a 3–5 bullet summary of changes. If the user asks for the result in chat, return the full document in one fenced Markdown block.
+- Never create helper, probe, or temporary files (`.mjs`, `.py`, `.txt`, ...).
+- Never run shell commands or scripts to inspect, escape, or transform the document. Reading the file as plain UTF-8 text is always sufficient, including for Persian/RTL text.
+- Target workflow: 1) read the file, 2) rewrite the file, 3) summarize. No other tool calls.
+- Scope: operate only on the file the user names (the target file). Do not read, search, or borrow content from other project files. Do not create, edit, or delete any file other than the target file.
+
+## Core Principles
+
+### Preserve the document
+
+- Preserve meaning, intent, and factual accuracy.
+- Minor wording, spelling, punctuation, and readability improvements are allowed if they do not alter meaning.
+- Do not introduce new claims, remove existing claims, or change the author's intent.
+
+By default:
+
+- Preserve all content.
+- Preserve all sections.
+- Preserve all technical details.
+- Preserve all examples.
+- Preserve all code.
+- Preserve all tables.
+- Preserve all links.
+- Preserve all lists.
+- Do not summarize.
+- Do not expand.
+- Do not reinterpret.
+- Do not optimize the content itself.
+- Only optimize how the content is presented.
+
+Never rewrite content unless the user explicitly requests rewriting.
+Never add new information.
+Never remove meaningful information.
+Never change the logical structure of the document.
+
+### Navigation is more important than decoration
+
+If there is a conflict between:
+
+- visual decoration
+- fast navigation
+- readability
+
+always prioritize:
+
+1. navigation
+2. readability
+3. decoration
+
+The goal is professional documentation, not visual effects.
+
+### Markdown only
+
+Output must remain pure Markdown.
+
+Never use:
+
+- HTML
+- CSS
+- JavaScript
+- embedded styling
+
+Examples of forbidden elements:
+
+- `<div dir="rtl">`
+- `<span>`
+- `<style>`
+
+Do not solve RTL issues with HTML wrappers.
+Use Markdown-native formatting only.
+
+## RTL and Mixed-Language Handling
+
+The document may contain:
+
+- Persian text
+- English text
+- code
+- commands
+- settings
+- labels
+- file names
+- paths
+- variables
+- tickers
+- identifiers
+
+For short technical identifiers use inline code formatting:
+`Session Offset`, `Cooldown`, `AUDUSD`, `Month`, `HH4`
+
+This improves RTL/LTR rendering in Markdown viewers.
+
+Use inline code for:
+
+- software settings
+- labels
+- variable names
+- tickers
+- technical identifiers
+- commands
+- file names
+- paths
+
+Do not wrap ordinary English prose in code formatting.
+
+## Heading Structure
+
+Create a clear heading hierarchy.
+
+Preferred structure:
+
+```markdown
+# Main Title
+
+## Major Section
+
+### Subsection
+
+#### Detail
+```
+
+Do not skip heading levels.
+
+Bad:
+
+```markdown
+# Title
+
+#### Section
+```
+
+Good:
+
+```markdown
+# Title
+
+## Section
+
+### Subsection
+```
+
+## Numbering Major Sections
+
+For long documents, number major sections.
+
+Example:
+
+```markdown
+## ۱. معرفی
+
+## ۲. تنظیمات
+
+## ۳. قوانین
+```
+
+Use numbering when:
+
+- the document is long
+- the document has many major sections
+- navigation benefits from numbering
+
+Do not force numbering on short documents.
+
+## Table of Contents
+
+For large documents:
+
+- generate a linked Table of Contents
+- place it near the beginning
+- preserve section order
+
+Example:
+
+```markdown
+## 📋 فهرست مطالب
+
+1. [معرفی](#۱-معرفی)
+2. [تنظیمات](#۲-تنظیمات)
+3. [قوانین](#۳-قوانین)
+```
+
+Do not generate a Table of Contents for short documents.
+
+## Emoji Usage
+
+Emoji are allowed only when they improve navigation.
+
+Preferred locations:
+
+- titles
+- major headings
+- important callouts
+
+Examples:
+
+```markdown
+## 🛡️ معرفی
+
+## ⚙️ تنظیمات
+
+## 📊 ساختار
+
+## 🔔 هشدارها
+
+## 🧠 قوانین
+
+## 🎯 کاربردها
+
+## 💡 نکات کاربردی
+
+## ⚠️ محدودیت‌ها
+
+## 🏁 جمع‌بندی
+```
+
+Avoid emoji overload.
+Do not place emoji at the beginning of every paragraph.
+Do not decorate normal text with random emoji.
+
+## Lists
+
+Choose the most appropriate list type.
+
+### Numbered Lists
+
+Use when:
+
+- order matters
+- steps exist
+- rules are enumerated
+- priorities exist
+
+Example:
+
+1. مرحله اول
+2. مرحله دوم
+3. مرحله سوم
+
+### Bullet Lists
+
+Use when:
+
+- order does not matter
+- features are listed
+- options are listed
+- characteristics are listed
+
+Example:
+
+- ویژگی اول
+- ویژگی دوم
+- ویژگی سوم
+
+### Checklists
+
+Use when:
+
+- prerequisites exist
+- validation exists
+- setup requirements exist
+- review tasks exist
+
+Example:
+
+- [ ] نصب Python
+- [ ] نصب Git
+- [ ] تنظیم API Key
+
+## Tables
+
+Use tables only when they improve readability.
+
+Good candidates:
+
+- settings
+- comparisons
+- labels and meanings
+- structured data
+
+Example:
+
+| تنظیم   | مقدار |
+| ------- | ----- |
+| روزها   | ۵     |
+| هفته‌ها | ۲     |
+
+Do not convert ordinary text into tables unnecessarily.
+
+## Structural Elements
+
+Preserve existing structural elements.
+
+Never destroy or flatten:
+
+- tables
+- code blocks
+- checklists
+- blockquotes
+- directory trees
+
+### Directory Trees
+
+Preserve directory trees exactly.
+
+Example:
+
+```text
+project/
+├── docs/
+├── src/
+└── tests/
+```
+
+Never convert directory trees into:
+
+- docs
+- src
+- tests
+
+### Code Blocks
+
+Preserve fenced code blocks.
+
+Example:
+
+```python
+print("hello")
+```
+
+Do not convert code blocks into prose.
+
+## Emphasis
+
+Use emphasis sparingly.
+
+### Bold
+
+Use for:
+
+- important concepts
+- important conclusions
+- key settings
+- important distinctions
+
+Example:
+**این مهم‌ترین بخش سیستم است.**
+
+Do not bold entire paragraphs.
+
+### Inline Code
+
+Use for:
+
+- settings
+- identifiers
+- commands
+- labels
+- paths
+- technical names
+
+Example:
+مقدار `Cooldown` را تنظیم کنید.
+
+## Callouts and Quotes
+
+Use blockquotes only when they improve scanning.
+
+Examples:
+
+> 💡 نکته مهم
+> 🔔 اولویت هشدار:
+>
+> ماه > هفته > روز
+> ⚠️ این ابزار معامله انجام نمی‌دهد.
+
+Do not turn ordinary text into blockquotes.
+Use them selectively.
+
+## Spacing Rules
+
+Keep spacing compact and consistent.
+
+Use:
+
+- one blank line between blocks
+- one blank line after headings
+- one blank line before lists
+
+Avoid:
+
+- excessive empty lines
+- decorative spacing
+- large visual gaps
+
+## Horizontal Rules
+
+Use horizontal rules only for major document boundaries.
+Avoid unnecessary separators.
+
+Bad:
+
+```markdown
+---
+---
+
+---
+```
+
+Good:
+
+```markdown
+---
+```
+
+Only when a major visual break is needed.
+
+## Internal Links
+
+When a Table of Contents exists:
+
+- create internal Markdown links
+- keep anchors synchronized with headings
+- preserve heading order
+
+Internal links are preferred for long documents.
+
+## Formatting Workflow
+
+When formatting a document:
+
+1. Read the Markdown source as plain UTF-8 text.
+2. Preserve content.
+3. Preserve order.
+4. Detect headings.
+5. Build hierarchy.
+6. Improve navigation.
+7. Generate TOC if useful.
+8. Improve lists.
+9. Improve tables.
+10. Improve emphasis.
+11. Improve RTL/LTR rendering.
+12. Normalize spacing.
+13. Run the Final Validation Checklist.
+14. Deliver per Execution Rules (write back to the same file by default).
+
+## Things This Skill Must Never Do
+
+Never:
+
+- rewrite content
+- summarize content
+- translate content
+- reorder sections
+- add new facts
+- remove facts
+- simplify technical details
+- add fictional examples
+- add new sections that did not exist
+- convert Markdown to HTML
+- inject CSS
+- create or run scripts or programs
+- create new or temporary files
+- use the terminal / shell
+
+This skill formats.
+It does not author.
+It does not edit.
+It does not rewrite.
+
+## Final Validation Checklist
+
+Before returning the final document verify:
+
+- [ ] Pure Markdown
+- [ ] No HTML
+- [ ] No CSS
+- [ ] Content preserved
+- [ ] Logical order preserved
+- [ ] Heading hierarchy improved
+- [ ] Navigation improved
+- [ ] TOC added when useful
+- [ ] Lists normalized
+- [ ] Tables preserved
+- [ ] Code blocks preserved
+- [ ] Directory trees preserved
+- [ ] RTL/LTR readability improved
+- [ ] Emoji usage controlled
+- [ ] Spacing normalized
+- [ ] No helper/probe files created
+- [ ] No shell commands executed
+- [ ] Ready for VS Code Markdown Preview
