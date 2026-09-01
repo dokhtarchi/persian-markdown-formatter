@@ -1,0 +1,28 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build distribution folder
+        run: |
+          mkdir -p dist/persian-markdown-formatter
+          cp SKILL.md dist/persian-markdown-formatter/
+          cd dist
+          zip -r persian-markdown-formatter.zip persian-markdown-formatter
+
+      - name: Publish Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/persian-markdown-formatter.zip
+          generate_release_notes: true
