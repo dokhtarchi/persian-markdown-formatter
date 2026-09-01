@@ -18,7 +18,6 @@ Examples of how users may invoke this skill:
 This skill is a Markdown formatter, not a content editor.
 
 Its responsibility is to improve:
-
 - presentation
 - readability
 - navigation
@@ -26,7 +25,6 @@ Its responsibility is to improve:
 - structural consistency
 
 while preserving:
-
 - content
 - meaning
 - logical order
@@ -51,7 +49,6 @@ while preserving:
 - Do not introduce new claims, remove existing claims, or change the author's intent.
 
 By default:
-
 - Preserve all content.
 - Preserve all sections.
 - Preserve all technical details.
@@ -74,13 +71,11 @@ Never change the logical structure of the document.
 ### Navigation is more important than decoration
 
 If there is a conflict between:
-
 - visual decoration
 - fast navigation
 - readability
 
 always prioritize:
-
 1. navigation
 2. readability
 3. decoration
@@ -92,25 +87,24 @@ The goal is professional documentation, not visual effects.
 Output must remain pure Markdown.
 
 Never use:
-
 - HTML
 - CSS
 - JavaScript
 - embedded styling
 
 Examples of forbidden elements:
-
 - `<div dir="rtl">`
 - `<span>`
 - `<style>`
 
 Do not solve RTL issues with HTML wrappers.
 Use Markdown-native formatting only.
+Single controlled exception: empty anchor tags `<a id="..."></a>` are allowed
+exclusively as TOC navigation targets. No other HTML is permitted.
 
 ## RTL and Mixed-Language Handling
 
 The document may contain:
-
 - Persian text
 - English text
 - code
@@ -129,7 +123,6 @@ For short technical identifiers use inline code formatting:
 This improves RTL/LTR rendering in Markdown viewers.
 
 Use inline code for:
-
 - software settings
 - labels
 - variable names
@@ -149,11 +142,8 @@ Preferred structure:
 
 ```markdown
 # Main Title
-
 ## Major Section
-
 ### Subsection
-
 #### Detail
 ```
 
@@ -163,7 +153,6 @@ Bad:
 
 ```markdown
 # Title
-
 #### Section
 ```
 
@@ -171,9 +160,7 @@ Good:
 
 ```markdown
 # Title
-
 ## Section
-
 ### Subsection
 ```
 
@@ -185,14 +172,11 @@ Example:
 
 ```markdown
 ## ۱. معرفی
-
 ## ۲. تنظیمات
-
 ## ۳. قوانین
 ```
 
 Use numbering when:
-
 - the document is long
 - the document has many major sections
 - navigation benefits from numbering
@@ -201,9 +185,8 @@ Do not force numbering on short documents.
 
 ## Table of Contents
 
-For large documents:
-
-- generate a linked Table of Contents
+For large documents, generating a linked Table of Contents is the default:
+- every TOC entry must be a working link — a plain (unlinked) TOC is not acceptable for long documents
 - place it near the beginning
 - preserve section order
 
@@ -211,7 +194,6 @@ Example:
 
 ```markdown
 ## 📋 فهرست مطالب
-
 1. [معرفی](#۱-معرفی)
 2. [تنظیمات](#۲-تنظیمات)
 3. [قوانین](#۳-قوانین)
@@ -224,7 +206,6 @@ Do not generate a Table of Contents for short documents.
 Emoji are allowed only when they improve navigation.
 
 Preferred locations:
-
 - titles
 - major headings
 - important callouts
@@ -232,24 +213,33 @@ Preferred locations:
 Examples:
 
 ```markdown
-## 🛡️ معرفی
-
-## ⚙️ تنظیمات
-
+## 📖 معرفی
+## 🧩 تنظیمات
 ## 📊 ساختار
-
 ## 🔔 هشدارها
-
 ## 🧠 قوانین
-
 ## 🎯 کاربردها
-
 ## 💡 نکات کاربردی
-
-## ⚠️ محدودیت‌ها
-
+## 🚫 محدودیت‌ها
 ## 🏁 جمع‌بندی
 ```
+
+### Variation-Selector Rule (Critical for Anchor Links)
+
+Never use emoji that contain U+FE0F (VS16) **in headings**.
+
+Forbidden heading emoji (contain VS16):
+- ✍️ ❤️ ☑️ 🛡️ ⚙️ ✔️ ⚠️ 🛠️
+
+Use single-codepoint emoji instead:
+- 📖 🧩 📊 🔔 🧠 🎯 💡 🏁 🎨 🚧 🧭 ✅ ❓ 📋 💾
+
+Reason: slug generators used by GitHub and VS Code may keep the invisible
+U+FE0F character inside the heading slug (a known slugger issue), which
+silently breaks every internal anchor link pointing to that heading.
+
+Note: this rule applies to headings only. Callouts and blockquotes may
+still use any emoji (they do not generate anchors).
 
 Avoid emoji overload.
 Do not place emoji at the beginning of every paragraph.
@@ -262,14 +252,12 @@ Choose the most appropriate list type.
 ### Numbered Lists
 
 Use when:
-
 - order matters
 - steps exist
 - rules are enumerated
 - priorities exist
 
 Example:
-
 1. مرحله اول
 2. مرحله دوم
 3. مرحله سوم
@@ -277,14 +265,12 @@ Example:
 ### Bullet Lists
 
 Use when:
-
 - order does not matter
 - features are listed
 - options are listed
 - characteristics are listed
 
 Example:
-
 - ویژگی اول
 - ویژگی دوم
 - ویژگی سوم
@@ -292,14 +278,12 @@ Example:
 ### Checklists
 
 Use when:
-
 - prerequisites exist
 - validation exists
 - setup requirements exist
 - review tasks exist
 
 Example:
-
 - [ ] نصب Python
 - [ ] نصب Git
 - [ ] تنظیم API Key
@@ -309,7 +293,6 @@ Example:
 Use tables only when they improve readability.
 
 Good candidates:
-
 - settings
 - comparisons
 - labels and meanings
@@ -317,10 +300,10 @@ Good candidates:
 
 Example:
 
-| تنظیم   | مقدار |
-| ------- | ----- |
-| روزها   | ۵     |
-| هفته‌ها | ۲     |
+| تنظیم | مقدار |
+|---|---|
+| روزها | ۵ |
+| هفته‌ها | ۲ |
 
 Do not convert ordinary text into tables unnecessarily.
 
@@ -329,7 +312,6 @@ Do not convert ordinary text into tables unnecessarily.
 Preserve existing structural elements.
 
 Never destroy or flatten:
-
 - tables
 - code blocks
 - checklists
@@ -350,7 +332,6 @@ project/
 ```
 
 Never convert directory trees into:
-
 - docs
 - src
 - tests
@@ -374,7 +355,6 @@ Use emphasis sparingly.
 ### Bold
 
 Use for:
-
 - important concepts
 - important conclusions
 - key settings
@@ -388,7 +368,6 @@ Do not bold entire paragraphs.
 ### Inline Code
 
 Use for:
-
 - settings
 - identifiers
 - commands
@@ -419,13 +398,11 @@ Use them selectively.
 Keep spacing compact and consistent.
 
 Use:
-
 - one blank line between blocks
 - one blank line after headings
 - one blank line before lists
 
 Avoid:
-
 - excessive empty lines
 - decorative spacing
 - large visual gaps
@@ -440,7 +417,6 @@ Bad:
 ```markdown
 ---
 ---
-
 ---
 ```
 
@@ -455,17 +431,42 @@ Only when a major visual break is needed.
 ## Internal Links
 
 When a Table of Contents exists:
-
 - create internal Markdown links
 - keep anchors synchronized with headings
 - preserve heading order
 
 Internal links are preferred for long documents.
 
+### Anchor Reliability (VS Code Preview & GitHub)
+
+Slug algorithm (VS Code githubSlugifier / github-slugger):
+- removes emoji, punctuation (— « » ( ) .), and ZWNJ from the heading slug
+- keeps Persian/Arabic letters and Persian digits
+- replaces each whitespace with `-` (double space → `--`)
+- may keep an invisible U+FE0F if present (see Variation-Selector Rule)
+
+Never compute anchors by guessing: derive them from the algorithm above,
+or prefer ASCII anchors.
+
+For guaranteed navigation in every viewer, use invisible ASCII anchors as
+TOC targets:
+
+```markdown
+<a id="sec-1"></a>
+
+## 👀 بخش ۱ — در یک نگاه
+
+- [بخش ۱](#sec-1)
+```
+
+Rules for these anchors:
+- id must be ASCII (`sec-1`, `sec-2`, ...)
+- one empty line before and after the anchor tag
+- use them only for TOC/navigation targets, never inside content
+
 ## Formatting Workflow
 
 When formatting a document:
-
 1. Read the Markdown source as plain UTF-8 text.
 2. Preserve content.
 3. Preserve order.
@@ -484,7 +485,6 @@ When formatting a document:
 ## Things This Skill Must Never Do
 
 Never:
-
 - rewrite content
 - summarize content
 - translate content
@@ -508,15 +508,16 @@ It does not rewrite.
 ## Final Validation Checklist
 
 Before returning the final document verify:
-
-- [ ] Pure Markdown
-- [ ] No HTML
+- [ ] Pure Markdown (only allowed exception: empty `<a id>` anchor tags)
+- [ ] No HTML other than the allowed anchor tags
 - [ ] No CSS
 - [ ] Content preserved
 - [ ] Logical order preserved
 - [ ] Heading hierarchy improved
 - [ ] Navigation improved
-- [ ] TOC added when useful
+- [ ] TOC added for long documents and every entry is a working link
+- [ ] Heading emoji contain no U+FE0F variation selector
+- [ ] TOC anchors derived from the slug algorithm or use ASCII anchors
 - [ ] Lists normalized
 - [ ] Tables preserved
 - [ ] Code blocks preserved
@@ -526,4 +527,4 @@ Before returning the final document verify:
 - [ ] Spacing normalized
 - [ ] No helper/probe files created
 - [ ] No shell commands executed
-- [ ] Ready for VS Code Markdown Preview
+- [ ] Ready for standard Markdown previews (GitHub, VS Code)
