@@ -2,10 +2,9 @@
 name: persian-markdown-formatter
 description: Format Persian and mixed Persian-English Markdown documents for maximum readability, navigation, and visual consistency. Use when cleaning, restructuring, standardizing, or polishing Markdown presentation without changing the content, meaning, logical order, scope, or technical accuracy. Suitable for documentation, guides, notes, manuals, README files, project documentation, tutorials, specifications, and long-form Markdown files.
 metadata:
-  version: "1.2.0"
+  version: "1.3.0"
   author: dokhtarchi
   repository: https://github.com/dokhtarchi/persian-markdown-formatter
----
 ---
 
 # Persian Markdown Formatter
@@ -139,6 +138,40 @@ Use inline code for:
 
 Do not wrap ordinary English prose in code formatting.
 
+### Line-Start Direction Rule (RTL Documents)
+
+Renderers choose each line's base direction from its **first strong character**:
+
+- A line starting with a Persian letter → rendered right-to-left, in correct order.
+- A line starting with a Latin letter or a backtick-wrapped identifier → rendered left-to-right, which scrambles word order in RTL readers.
+- Numbers and emoji are **not** strong directional characters and do not set the line direction.
+
+In Persian documents, start every heading, list item, and standalone paragraph line with a Persian word so the line renders right-aligned and in correct reading order.
+
+Rewrite patterns:
+
+- ❌ `Remote و Remote Management` → ✅ `مدیریت ریموت (Remote)`
+- ❌ `Branching و Merging` → ✅ `شاخه‌سازی و ادغام (Branching و Merging)`
+- ❌ `GitHub Actions و انتشار خودکار` → ✅ `انتشار خودکار با GitHub Actions`
+- ❌ `` `.gitignore` جامع`` → ✅ ``فایل `.gitignore` جامع``
+- ❌ `Conventional Commits` → ✅ `پیام‌های commit قراردادی (Conventional Commits)`
+
+Move English terms to the middle or the end of the line, or inside parentheses.
+
+**When an English term must come first** (e.g. technical command names, file paths, exact identifiers), prepend an invisible **RLM** character (U+200F) to lock the line direction to RTL without changing the visible text.
+
+This rule applies to:
+- headings
+- list items (bulleted, numbered, checklist)
+- Table of Contents entries
+- standalone paragraph lines that mix Persian and English
+
+It does not apply to:
+- inline code spans within a Persian sentence
+- code blocks
+- URLs
+- lines that are purely English
+
 ## Heading Structure
 
 Create a clear heading hierarchy.
@@ -208,6 +241,8 @@ Do not generate a Table of Contents for short documents.
 
 If section headings carry emoji, mirror the same emoji in their TOC entries
 so the TOC doubles as a visual map (see Emoji Usage).
+
+TOC entries must also obey the Line-Start Direction Rule: start every entry with a Persian word (the emoji prefix does not set direction, so a Persian word must immediately follow it).
 
 ## Emoji Usage
 
@@ -299,6 +334,8 @@ Example:
 - [ ] نصب Git
 - [ ] تنظیم API Key
 
+Every list item in a Persian document must obey the Line-Start Direction Rule.
+
 ## Tables
 
 Use tables only when they improve readability.
@@ -317,6 +354,8 @@ Example:
 | هفته‌ها | ۲ |
 
 Do not convert ordinary text into tables unnecessarily.
+
+In RTL tables, prefer Persian column headers where possible so the whole table aligns consistently.
 
 ## Structural Elements
 
@@ -488,7 +527,7 @@ When formatting a document:
 8. Improve lists.
 9. Improve tables.
 10. Improve emphasis.
-11. Improve RTL/LTR rendering.
+11. Improve RTL/LTR rendering (including line-start direction).
 12. Normalize spacing.
 13. Run the Final Validation Checklist.
 14. Deliver per Execution Rules (write back to the same file by default).
@@ -529,6 +568,7 @@ Before returning the final document verify:
 - [ ] TOC added for long documents and every entry is a working link
 - [ ] Heading emoji contain no U+FE0F variation selector
 - [ ] TOC anchors derived from the slug algorithm or use ASCII anchors
+- [ ] Every heading, list item, and TOC entry in Persian documents starts with a Persian word (or RLM if an English term must lead)
 - [ ] Lists normalized
 - [ ] Tables preserved
 - [ ] Code blocks preserved
