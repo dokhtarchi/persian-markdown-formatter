@@ -2,7 +2,7 @@
 name: persian-markdown-formatter
 description: Format Persian and mixed Persian-English Markdown documents for maximum readability, navigation, and visual consistency. Use when cleaning, restructuring, standardizing, or polishing Markdown presentation without changing the content, meaning, logical order, scope, or technical accuracy. Suitable for documentation, guides, notes, manuals, README files, project documentation, tutorials, specifications, and long-form Markdown files.
 metadata:
-  version: "1.3.0"
+  version: "1.4.0"
   author: dokhtarchi
   repository: https://github.com/dokhtarchi/persian-markdown-formatter
 ---
