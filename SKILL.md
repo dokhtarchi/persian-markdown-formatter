@@ -2,7 +2,7 @@
 name: persian-markdown-formatter
 description: Format Persian and mixed Persian-English Markdown documents for maximum readability, navigation, and visual consistency. Use when cleaning, restructuring, standardizing, or polishing Markdown presentation without changing the content, meaning, logical order, scope, or technical accuracy. Suitable for documentation, guides, notes, manuals, README files, project documentation, tutorials, specifications, and long-form Markdown files.
 metadata:
-  version: "1.1.0"
+  version: "1.2.0"
   author: dokhtarchi
   repository: https://github.com/dokhtarchi/persian-markdown-formatter
 ---
@@ -206,14 +206,20 @@ Example:
 
 Do not generate a Table of Contents for short documents.
 
+If section headings carry emoji, mirror the same emoji in their TOC entries
+so the TOC doubles as a visual map (see Emoji Usage).
+
 ## Emoji Usage
 
 Emoji are allowed only when they improve navigation.
 
-Preferred locations:
-- titles
-- major headings
-- important callouts
+Use emoji to the necessary and sufficient degree — neither absent nor excessive:
+
+- Add exactly one contextually meaningful emoji per major heading, chosen so it reflects the section's content (for example: 📖 background, 🚨 problems, 🔍 root cause, 🧭 process/steps, 📊 current status, 🔧 how-to, 💎 lessons learned).
+- Mirror the same emoji in the matching Table of Contents entry, so the TOC works as a visual map of the document.
+- Use functional emoji (⚠️ 💡 🔔) only on real warnings and tips, never on ordinary text.
+
+Emoji that add no meaning are decoration. If a heading is already clear without an emoji, the emoji must earn its place by aiding navigation or recognition.
 
 Examples:
 
@@ -528,7 +534,7 @@ Before returning the final document verify:
 - [ ] Code blocks preserved
 - [ ] Directory trees preserved
 - [ ] RTL/LTR readability improved
-- [ ] Emoji usage controlled
+- [ ] Emoji usage necessary-and-sufficient: one meaningful emoji per major heading, mirrored in TOC; functional emoji only on warnings/tips
 - [ ] Spacing normalized
 - [ ] No helper/probe files created
 - [ ] No shell commands executed
