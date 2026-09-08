@@ -140,28 +140,45 @@ Do not wrap ordinary English prose in code formatting.
 
 ### Line-Start Direction Rule (RTL Documents)
 
-Renderers choose each line's base direction from its **first strong character**:
+Renderers choose each line's base direction from its first **strong directional letter**.
+Digits (Persian or ASCII), emoji, and punctuation are NOT strong: they do not set
+the line direction. Backticks are neutral too, but the Latin letters inside an
+inline code span ARE strong — so a line starting with a Latin identifier in
+backticks still renders LTR.
 
-- A line starting with a Persian letter → rendered right-to-left, in correct order.
-- A line starting with a Latin letter or a backtick-wrapped identifier → rendered left-to-right, which scrambles word order in RTL readers.
-- Numbers and emoji are **not** strong directional characters and do not set the line direction.
+Therefore: the first **letter** of every heading, subheading, list item, TOC entry,
+and standalone line in a Persian document must be a Persian (or Arabic) letter.
+Numbers and emoji may precede it, but the first word after them must begin
+with a Persian letter.
 
-In Persian documents, start every heading, list item, and standalone paragraph line with a Persian word so the line renders right-aligned and in correct reading order.
+Bad (first letter is Latin → line renders LTR and scrambles):
+- 🚩 . Tag و Release (راهنمای کامل)
+- ۸.۱ Branch چیست؟
+- Branch متحرک است
+- Release title: v1.2.0
+- `` `.gitignore` جامع``
 
-Rewrite patterns:
+Good (first letter is Persian → line renders RTL in correct order):
+- 🚩 ۹. تگ و Release (راهنمای کامل)
+- ۸.۱ شاخه (Branch) چیست؟
+- شاخه (Branch) متحرک است
+- عنوان Release: v1.2.0
+- ``فایل `.gitignore` جامع``
 
-- ❌ `Remote و Remote Management` → ✅ `مدیریت ریموت (Remote)`
-- ❌ `Branching و Merging` → ✅ `شاخه‌سازی و ادغام (Branching و Merging)`
-- ❌ `GitHub Actions و انتشار خودکار` → ✅ `انتشار خودکار با GitHub Actions`
-- ❌ `` `.gitignore` جامع`` → ✅ ``فایل `.gitignore` جامع``
-- ❌ `Conventional Commits` → ✅ `پیام‌های commit قراردادی (Conventional Commits)`
-
-Move English terms to the middle or the end of the line, or inside parentheses.
-
-**When an English term must come first** (e.g. technical command names, file paths, exact identifiers), prepend an invisible **RLM** character (U+200F) to lock the line direction to RTL without changing the visible text.
+Rewrite techniques:
+- Transliterate: Tag → تگ، Branch → شاخه
+- Wrap in a Persian frame: "Branch چیست؟" → "شاخه (Branch) چیست؟"
+- Move the term later or into parentheses:
+  - ❌ `Remote و Remote Management` → ✅ `مدیریت ریموت (Remote)`
+  - ❌ `Branching و Merging` → ✅ `شاخه‌سازی و ادغام (Branching و Merging)`
+  - ❌ `GitHub Actions و انتشار خودکار` → ✅ `انتشار خودکار با GitHub Actions`
+  - ❌ `Conventional Commits` → ✅ `پیام‌های commit قراردادی (Conventional Commits)`
+- Last resort: prepend an invisible RLM (U+200F) when the exact English string
+  must lead (command names, file paths, exact identifiers). This locks the line
+  direction to RTL without changing the visible text.
 
 This rule applies to:
-- headings
+- headings and subheadings
 - list items (bulleted, numbered, checklist)
 - Table of Contents entries
 - standalone paragraph lines that mix Persian and English
@@ -568,7 +585,7 @@ Before returning the final document verify:
 - [ ] TOC added for long documents and every entry is a working link
 - [ ] Heading emoji contain no U+FE0F variation selector
 - [ ] TOC anchors derived from the slug algorithm or use ASCII anchors
-- [ ] Every heading, list item, and TOC entry in Persian documents starts with a Persian word (or RLM if an English term must lead)
+- [ ] In Persian documents, the first LETTER (ignoring digits, emoji, punctuation) of every heading, list item, and TOC entry is a Persian letter, or the line starts with RLM
 - [ ] Lists normalized
 - [ ] Tables preserved
 - [ ] Code blocks preserved
