@@ -157,7 +157,7 @@ Run this mentally after every batch of edits.
 | دکمه | «دکمهٔ» | دکمهٔ **Update release** |
 | تب / پنل / فیلد | «تب»، «در تب»، «فیلد» | در تب **Changes** |
 | پیام خطا | «پیام خطای» | پیام خطای `error: ...` |
-| نسخه / تگ | «نسخهٔ»، «تگ» | نسخهٔ `v1.0.0` |
+| نسخه / برچسب | «نسخهٔ»، «برچسب» | نسخهٔ `v1.0.0` |
 | شاخه | «شاخهٔ» | شاخهٔ `main` |
 | متغیر / نماد | «متغیر»، «نماد» | نماد `AUDUSD` |
 | روش / الگو | «روش»، «الگوی» | روش `fast-forward` |
@@ -197,7 +197,7 @@ Bad:  **Remote** آدرس نسخهٔ راه دور است.
 Good: **آدرس Remote** نشانی نسخهٔ راه دور است.
 
 Bad:  Command Palette → `Git: Merge...`
-Good: از Command Palette مسیر `Git: Merge...` را انتخاب کنید.
+Good: از **Command Palette** مسیر `Git: Merge...` را انتخاب کنید.
 ```
 
 Note the last two: the Latin identifier is framed, never translated. Writing
@@ -377,3 +377,4 @@ per the Execution Rules.
       each entry is one unfragmented link to a unique ASCII anchor.
 - [ ] Every heading emoji is on the safelist, at most one per heading.
 - [ ] Spacing is normalized, and re-running this skill would change nothing.
+````
